@@ -23,7 +23,7 @@ function Home() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/users/id/${userId}`, {
+    fetch(`/users/id/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
