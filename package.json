@@ -1,0 +1,19 @@
+{
+  "name": "ticketblaster_local",
+  "version": "1.0.0",
+  "description": "MERN app deployed to heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevindarbydev/ticketblaster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevindarbydev/ticketblaster/issues"
+  },
+  "homepage": "https://github.com/kevindarbydev/ticketblaster#readme"
+}

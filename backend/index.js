@@ -47,7 +47,9 @@ app.post("/users/register", async (request, response) => {
       // Check to see if the user already exists. If not, then create it.
       const user = await userModel.findOne({ email: email });
       if (user) {
-        console.log("Invalid registration - email " + email + " already exists.");
+        console.log(
+          "Invalid registration - email " + email + " already exists."
+        );
         response.send({ success: false });
         return;
       } else {
@@ -280,9 +282,11 @@ app.get("/allTickets", async (req, res) => {
     console.log(err);
   }
 });
-app.get('/', (req, res) => { res.send('Hello from Express!')});
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
+});
 /* ---------------------------------------------------- APP LISTEN ---------------------------------------------------- */
-app.listen(process.env.PORT || 5000), (() => console.log("App started!"));
+app.listen(process.env.PORT || 3000);
 
 // change these keys based on contents of .env file
 // this sets the api data to be fetched from 3001/api, therefore they are outside of the frontend and hidden
