@@ -38,7 +38,7 @@ function Home() {
 
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
-    const url = "http://localhost:3001/api";
+    const url = "/api";
 
     setLoading(true);
 
