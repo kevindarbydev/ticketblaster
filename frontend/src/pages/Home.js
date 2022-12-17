@@ -22,8 +22,8 @@ function Home() {
 
   const userId = sessionStorage.getItem("userId");
 
-/*   useEffect(() => {
-    fetch(`/users/id/${userId}`, {
+   useEffect(() => {
+    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -34,7 +34,7 @@ function Home() {
         setFirstName(json.firstName);
         setLastName(json.lastName);
       });
-  }, [userId]); */
+  }, [userId]); 
 
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
@@ -42,17 +42,17 @@ function Home() {
 
     setLoading(true);
     fetch(url, {
-      mode: 'cors',
-      headers : {
-        'Access-Control-Allow-Origin': '*'
-      }
-    }).then((response) => response.json())
-    .then((data) => {
-      setEventsData(data._embedded.events);
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setEventsData(data._embedded.events);
         setLoading(false);
-   });
+      });
   }, []);
-
 
   const eventElements = eventsData.map((event) => {
     return (
@@ -72,7 +72,13 @@ function Home() {
     <>
       <div className="home-container">
         <div className="home-left">
-        {isLoggedIn ? <h1 className="home-title">Welcome back {firstName} {lastName}</h1> : <h1 className="home-title">Welcome, Guest</h1>}
+          {isLoggedIn ? (
+            <h1 className="home-title">
+              Welcome back {firstName} {lastName}
+            </h1>
+          ) : (
+            <h1 className="home-title">Welcome, Guest</h1>
+          )}
           {/*{isAdmin ? <h1>Hello Admin</h1> : <h1></h1>}*/}
           {!loading && <div>{eventElements}</div>}
           {loading && (
