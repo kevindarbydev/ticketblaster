@@ -23,7 +23,7 @@ function Home() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
+    fetch(`/users/id/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
