@@ -23,14 +23,14 @@ function Home() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    fetch(`/users/id/${userId}`, {
+    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
       .then((data) => data.json())
-      .then((json) => {        
+      .then((json) => {
         setFirstName(json.firstName);
         setLastName(json.lastName);
       });
@@ -38,7 +38,7 @@ function Home() {
 
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
-    const url = "/api";
+    const url = "https://ticketblaster-deploy.herokuapp.com/api";
 
     setLoading(true);
 
