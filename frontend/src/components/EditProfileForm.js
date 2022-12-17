@@ -50,13 +50,17 @@ function EditProfilehtmlForm() {
 
     // This will send a post request to update the data in the database.
     try {
-      await fetch(`http://localhost:3001/users/${userId}`, {
-        method: "POST",
-        body: JSON.stringify(editedPerson),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => console.log("Response: " + response));
+      await fetch(
+        `https://ticketblaster-deploy.herokuapp.com/users/${userId}`,
+        {
+          method: "POST",
+          body: JSON.stringify(editedPerson),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      ).then((response) => console.log("Response: " + response));
     } catch (err) {
       console.error(err);
     }
@@ -233,7 +237,7 @@ async function loadUserDetails(id) {
   console.log("Loading user details..." + currentId);
 
   try {
-    fetch(`http://localhost:3001/users/id/${currentId}`, {
+    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${currentId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",

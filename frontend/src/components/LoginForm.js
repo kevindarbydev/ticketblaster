@@ -37,7 +37,7 @@ function LoginForm() {
     }
 
     if (emailErr === false && passwordErr === false) {
-      fetch("http://localhost:3001/users/login", {
+      fetch("https://ticketblaster-deploy.herokuapp.com//users/login", {
         method: "POST",
         body: JSON.stringify({
           email: email,
@@ -50,12 +50,10 @@ function LoginForm() {
         .then((data) => data.json())
         .then((json) => {
           console.log("login call " + email);
-         
+
           getUserId(email);
           alert("Successfully Logged in!");
-          json.success ? setIsLoggedIn(true) : setIsLoggedIn(false);
-          json.success ? sessionStorage.setItem("pw", password) : console.log("loginform.js password fail"); 
-          //setting password in storage to help with admin update, will change when solution is found
+          json.success ? setIsLoggedIn(true) : setIsLoggedIn(false);        
         });
     }
   };
@@ -101,21 +99,20 @@ function getUserId(email) {
   
   console.log("Received email: " + email);
   
-  fetch(`http://localhost:3001/users/email/${email}`, {
+  fetch(`https://ticketblaster-deploy.herokuapp.com/users/email/${email}`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
     .then((data) => data.json())
-    .then((json) => {      
+    .then((json) => {
       console.log("Received user: " + JSON.stringify(json));
-      console.log(json.isAdmin)
+      console.log(json.isAdmin);
       sessionStorage.setItem("userId", json._id);
       json.isAdmin === true
         ? sessionStorage.setItem("admin", true)
         : sessionStorage.setItem("admin", false);
-      
     });
 }
  

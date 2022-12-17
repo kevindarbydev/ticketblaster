@@ -92,8 +92,9 @@ function RegistrationForm() {
       securityCodeErr === false &&
       expDateErr === false
     ) {
-      fetch("http://localhost:3001/users/register", {
+      fetch("https://ticketblaster-deploy.herokuapp.com/users/register", {
         method: "POST",
+        mode: "cors",
         body: JSON.stringify({
           email: email,
           password: password,
@@ -107,13 +108,16 @@ function RegistrationForm() {
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          //"Access-Control-Allow-Origin": "*", disabled for now until i can sanitize incoming requests
         },
       })
         .then((data) => data.json())
         .then((json) => {
           if (json.success === true) {
             try {
-              alert("Successfully Registered! - Redirecting you to the login page");
+              alert(
+                "Successfully Registered! - Redirecting you to the login page"
+              );
               navigate("/login", { replace: true });
             } catch (error) {
               console.log(error);

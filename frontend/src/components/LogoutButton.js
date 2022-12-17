@@ -14,7 +14,7 @@ export default function LogoutButton() {
         setIsAdmin(false);
         sessionStorage.setItem("admin", false);
         sessionStorage.setItem("userId", null);
-        sessionStorage.setItem("pw", null);
+       
         navigate("/");
     };
     return (

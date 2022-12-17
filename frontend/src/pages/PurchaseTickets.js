@@ -16,11 +16,17 @@ export default function PurchaseTicket(props) {
   };
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
-    const url = "http://localhost:3001/api";
+    const url = "https://ticketblaster-deploy.herokuapp.com/api";
 
     const loadData = async () => {
       const id = params.id.toString();
-      await fetch(url)
+      await fetch(url, {
+        mode: "cors",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           setEvents(
@@ -89,7 +95,11 @@ export default function PurchaseTicket(props) {
                         {/* add price range */}
                         {/* add capacity */}
                         {/* add age restrictions/notices */}
-                        <Button onClick={handlePurchaseClick} variant="contained" style={{ marginLeft: "50%", marginTop: "-5%" }}>
+                        <Button
+                          onClick={handlePurchaseClick}
+                          variant="contained"
+                          style={{ marginLeft: "50%", marginTop: "-5%" }}
+                        >
                           Purchase
                         </Button>
                       </Card>

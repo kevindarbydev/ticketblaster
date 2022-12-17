@@ -18,12 +18,15 @@ export default function FinalizePurchase() {
   const loggedInUser = sessionStorage.getItem("userId");
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3001/users/id/${loggedInUser}`, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
+    fetch(
+      `https://ticketblaster-deploy.herokuapp.com/users/id/${loggedInUser}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         setUserData(data);
@@ -33,7 +36,7 @@ export default function FinalizePurchase() {
   // --------- HANDLE SUBMIT --------------
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3001/tickets/purchase", {
+    fetch("https://ticketblaster-deploy.herokuapp.com/tickets/purchase", {
       method: "POST",
       body: JSON.stringify({
         email: userData.email,
@@ -45,6 +48,7 @@ export default function FinalizePurchase() {
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
       },
     })
       .then((data) => data.json())

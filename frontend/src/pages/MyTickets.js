@@ -10,10 +10,11 @@ function MyTickets() {
   // retrieve logged in user information from session storage in order to retrieve email
   const userId = sessionStorage.getItem("userId");
   useEffect(() => {
-    fetch(`http://localhost:3001/users/id/${userId}`, {
+    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
       },
     })
       .then((data) => data.json())
