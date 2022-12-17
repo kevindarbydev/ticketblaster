@@ -293,7 +293,7 @@ app.listen(process.env.PORT || 5000);
 app.get("/api", (req, res) => {
   const options = {
     method: "GET",
-    url: `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=522&apikey=${process.env.API_KEY_CHRIS}`,
+    url: `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=522&apikey=${process.env.MONGODB_CONNECTION_STRING}`,
   };
 
   axios.request(options).then((response) => {
