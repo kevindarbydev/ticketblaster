@@ -282,7 +282,7 @@ app.get("/allTickets", async (req, res) => {
 });
 app.get('/', (req, res) => { res.send('Hello from Express!')});
 /* ---------------------------------------------------- APP LISTEN ---------------------------------------------------- */
-app.listen(process.env.PORT || 3000), (() => console.log("App started!"));
+app.listen(process.env.PORT || 5000), (() => console.log("App started!"));
 
 // change these keys based on contents of .env file
 // this sets the api data to be fetched from 3001/api, therefore they are outside of the frontend and hidden
