@@ -22,7 +22,7 @@ function Home() {
 
   const userId = sessionStorage.getItem("userId");
 
-  useEffect(() => {
+/*   useEffect(() => {
     fetch(`/users/id/${userId}`, {
       method: "GET",
       headers: {
@@ -34,21 +34,25 @@ function Home() {
         setFirstName(json.firstName);
         setLastName(json.lastName);
       });
-  }, [userId]);
+  }, [userId]); */
 
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
     const url = "/api";
 
     setLoading(true);
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setEventsData(data._embedded.events);
+    fetch(url, {
+      mode: 'cors',
+      headers : {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => response.json())
+    .then((data) => {
+      setEventsData(data._embedded.events);
         setLoading(false);
-      });
+   });
   }, []);
+
 
   const eventElements = eventsData.map((event) => {
     return (
