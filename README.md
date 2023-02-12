@@ -22,15 +22,13 @@ cd backend
 npm install
 ```
 #### In the main project directory, change .env.example to .env and insert your mongoDB connection string where instructed.
-#### Afterwards, navigate to 'index.js' in the backend subfolder...
-#### Change the following line (line 295):
+##### Also, be sure to delete the numbered lines
+#### Insert your Ticketmaster API Key in .env where it says "API_KEY= "
+#### Your API Key should now be plugged in and working in the following line (line 295):
 ```
-url: `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=522&apikey=${process.env.API_KEY_CHRIS}`,
+url: `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=522&apikey=${process.env.API_KEY}`,
 ```
-#### Replace the end with:
-```
-`...apikey=${process.env.DEMO_API_KEY}`
-```
+
 #### Once dependencies are installed and your .env is configured, you can use the below commands to start the servers:
 ```
 cd backend
