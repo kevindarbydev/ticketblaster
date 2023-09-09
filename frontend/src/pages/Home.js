@@ -21,7 +21,7 @@ function Home() {
   const [lastName, setLastName] = useState("");
 
   const userId = sessionStorage.getItem("userId");
-
+const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
    useEffect(() => {
     fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
       method: "GET",
