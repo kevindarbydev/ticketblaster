@@ -36,23 +36,26 @@ function Home() {
       });
   }, [userId]); 
 
-  useEffect(() => {
-    // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
-     const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
+useEffect(() => {
+  setLoading(true);
 
-    setLoading(true);
-    fetch(url, {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setEventsData(data._embedded.events);
-        setLoading(false);
-      });
-  }, []);
+  fetch(url, {
+    // Include CORS headers
+    method: "GET",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin":
+        "https://clever-hotteok-f60642.netlify.app",
+      "Access-Control-Allow-Methods": "GET,OPTIONS", 
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      setEventsData(data._embedded.events);
+      setLoading(false);
+    });
+}, []);
 
   const eventElements = eventsData.map((event) => {
     return (
