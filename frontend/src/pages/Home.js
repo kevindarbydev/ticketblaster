@@ -21,7 +21,7 @@ function Home() {
   const [lastName, setLastName] = useState("");
 
   const userId = sessionStorage.getItem("userId");
-const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
+
    useEffect(() => {
     fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
       method: "GET",
@@ -36,18 +36,15 @@ const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
       });
   }, [userId]); 
 
+const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
+
 useEffect(() => {
   setLoading(true);
 
   fetch(url, {
-    // Include CORS headers
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
-      "Access-Control-Allow-Origin":
-        "https://clever-hotteok-f60642.netlify.app",
-      "Access-Control-Allow-Methods": "GET,OPTIONS", 
-      "Access-Control-Allow-Headers": "Content-Type",
     },
   })
     .then((response) => response.json())
@@ -56,6 +53,7 @@ useEffect(() => {
       setLoading(false);
     });
 }, []);
+
 
   const eventElements = eventsData.map((event) => {
     return (
