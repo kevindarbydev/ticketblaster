@@ -22,19 +22,7 @@ function Home() {
 
   const userId = sessionStorage.getItem("userId");
 
-   useEffect(() => {
-    fetch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((data) => data.json())
-      .then((json) => {
-        setFirstName(json.firstName);
-        setLastName(json.lastName);
-      });
-  }, [userId]); 
+  
 
 const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
 
