@@ -38,7 +38,7 @@ function Home() {
 
   useEffect(() => {
     // ticketmaster api is set to run from the backend (index.js of /backend), effectively hiding our api keys
-    const url = "https://ticketblaster-deploy.herokuapp.com/api";
+     const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
 
     setLoading(true);
     fetch(url, {
