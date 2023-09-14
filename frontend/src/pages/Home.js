@@ -75,7 +75,7 @@ useEffect(() => {
         <div className="home-left">
           {isLoggedIn ? (
             <h1 className="home-title">
-              Welcome back {firstName} {lastName}
+              Welcome back!
             </h1>
           ) : (
             <h1 className="home-title">Welcome, Guest</h1>
