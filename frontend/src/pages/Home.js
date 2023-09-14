@@ -36,7 +36,7 @@ function Home() {
  //     });
 //  }, [userId]); 
 
-const url = "https://4oucx8rlo7.execute-api.us-east-1.amazonaws.com/api";
+const url = "https://gxvz2rush4gi5baiffpgm3z6mu0okznw.lambda-url.us-east-1.on.aws/";
 
 useEffect(() => {
   setLoading(true);
