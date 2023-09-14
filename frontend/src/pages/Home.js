@@ -42,10 +42,7 @@ useEffect(() => {
   setLoading(true);
 
   fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
+    method: "GET",   
   })
     .then((response) => response.json())
     .then((data) => {
