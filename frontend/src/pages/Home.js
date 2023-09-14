@@ -16,11 +16,11 @@ function Home() {
 
   const [loading, setLoading] = useState(false);
 
-  const [firstName, setFirstName] = useState("");
+//  const [firstName, setFirstName] = useState("");
 
-  const [lastName, setLastName] = useState("");
+ // const [lastName, setLastName] = useState("");
 
-  const userId = sessionStorage.getItem("userId");
+ // const userId = sessionStorage.getItem("userId");
 
    //useEffect(() => {
     //etch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
