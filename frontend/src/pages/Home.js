@@ -16,40 +16,22 @@ function Home() {
 
   const [loading, setLoading] = useState(false);
 
-//  const [firstName, setFirstName] = useState("");
+ const url = "https://rwspf4x32j.execute-api.us-east-1.amazonaws.com/api";
 
- // const [lastName, setLastName] = useState("");
+  useEffect(() => {
+    setLoading(true);
 
- // const userId = sessionStorage.getItem("userId");
-
-   //useEffect(() => {
-    //etch(`https://ticketblaster-deploy.herokuapp.com/users/id/${userId}`, {
-      //method: "GET",
-      //headers: {
-        //"Content-type": "application/json; charset=UTF-8",
-      //},
-    //})
-     // .then((data) => data.json())
-     // .then((json) => {
-     //   setFirstName(json.firstName);
-   //     setLastName(json.lastName);
- //     });
-//  }, [userId]); 
-
-const url = "https://gxvz2rush4gi5baiffpgm3z6mu0okznw.lambda-url.us-east-1.on.aws/";
-
-useEffect(() => {
-  setLoading(true);
-
-  fetch(url, {
-    method: "GET",   
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      setEventsData(data._embedded.events);
-      setLoading(false);
-    });
-}, []);
+    fetch(url, {    
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+          console.log("Response: " + data)
+      });
+  }, []);
 
 
   const eventElements = eventsData.map((event) => {
