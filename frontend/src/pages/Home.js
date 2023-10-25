@@ -18,20 +18,18 @@ function Home() {
 
  const url = "https://rwspf4x32j.execute-api.us-east-1.amazonaws.com/api";
 
-  useEffect(() => {
-    setLoading(true);
+useEffect(() => {
+  setLoading(true);
 
-    fetch(url, {    
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-          console.log("Response: " + data)
-      });
-  }, []);
+  fetch(url, {
+    method: "GET",   
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      setEventsData(data._embedded.events);
+      setLoading(false);
+    });
+}, []);
 
 
   const eventElements = eventsData.map((event) => {
